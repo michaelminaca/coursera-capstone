@@ -1,21 +1,31 @@
 import COLORS from '../assets/STYLES';
+import { VStack } from '@chakra-ui/react';
 
-const Card = () => {
+const Card = ({ setIsReservationBooking }) => {
   const cardStyle = {
-    width: '30%',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    backgroundColor: `${COLORS.primaryGreen}EF`,
+    fontSize: '48px',
+    fontFamily: 'Karla, sans-serif',
+    textAlign: 'center',
+    marginTop: '40px',
+  };
+
+  const buttonStyle = {
+    backgroundColor: COLORS.primaryGreen,
+    padding: '10px',
     color: COLORS.primaryWhite,
-    fontSize: '20px',
     borderRadius: '16px',
   };
+
   return (
-    <div style={cardStyle}>
-      <h1 style={{ padding: '10px', margin: '10px', textAlign: 'center' }}>
-        Reservation Confirmed
-      </h1>
-    </div>
+    <VStack>
+      <h1 style={cardStyle}>Reservation Booked</h1>
+      <button
+        style={buttonStyle}
+        onClick={() => setIsReservationBooking(false)}
+      >
+        Back
+      </button>
+    </VStack>
   );
 };
 
