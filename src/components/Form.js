@@ -21,7 +21,6 @@ const Form = ({ formInput, setFormInput }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(formInput);
     setFormInput({ name: '', date: '', time: '', numberOfDiners: '' });
     setIsReservationBooking(true);
   };

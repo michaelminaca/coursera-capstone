@@ -1,7 +1,7 @@
 import COLORS from '../assets/STYLES';
 import { VStack } from '@chakra-ui/react';
 
-const Card = ({ setIsReservationBooking }) => {
+const Card = ({ setIsReservationBooking, submitValues }) => {
   const cardStyle = {
     fontSize: '48px',
     fontFamily: 'Karla, sans-serif',
