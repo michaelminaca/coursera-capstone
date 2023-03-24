@@ -1,4 +1,6 @@
 import { HStack } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
+
 import logo from '../assets/images/Logo.svg';
 import COLORS from '../assets/STYLES';
 
@@ -20,11 +22,11 @@ const NavBar = () => (
       alignItems="center"
     >
       <img src={logo} alt="logo" />
-      <a href="./">HOME</a>
-      <a href="./">ABOUT</a>
-      <a href="./">MENU</a>
-      <a href="./">RESERVATIONS</a>
-      <a href="./">ORDER ONLINE</a>
+      <Link to="/">HOME</Link>
+      <Link to="/">ABOUT</Link>
+      <Link to="/">MENU</Link>
+      <Link to="/reservations">RESERVATIONS</Link>
+      <Link to="/">ORDER ONLINE</Link>
     </HStack>
   </nav>
 );

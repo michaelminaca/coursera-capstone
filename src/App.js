@@ -1,25 +1,17 @@
 import './App.css';
-import { useState } from 'react';
-import NavBar from './components/NavBar';
-import Main from './components/Main';
 import { ChakraProvider } from '@chakra-ui/react';
+import { Route, Routes } from 'react-router-dom';
+
+import HomePage from './components/HomePage';
+import ReservationsPage from './components/ReservationsPage';
 
 function App() {
-  const [formInput, setFormInput] = useState({
-    name: '',
-    date: '',
-    time: '',
-    numberOfDiners: '',
-  });
-
   return (
     <ChakraProvider>
-      <div
-        style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}
-      >
-        <NavBar />
-        <Main formInput={formInput} setFormInput={setFormInput} />
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/reservations" element={<ReservationsPage />} />
+      </Routes>
     </ChakraProvider>
   );
 }

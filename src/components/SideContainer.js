@@ -10,9 +10,8 @@ const leftContainerStyle = {
 const reserveTableTextStyle = {
   fontFamily: 'Markazi Text, serif',
   color: COLORS.primaryWhite,
-  fontSize: '64px',
+  fontSize: '4rem',
   textAlign: 'center',
-  letterSpacing: '10px',
   marginLeft: '20px',
   marginRight: '20px',
 };
