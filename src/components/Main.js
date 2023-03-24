@@ -1,7 +1,13 @@
 import SideContainer from './SideContainer';
-import Form from './Form';
+import Form from './BookingForm';
 
-const Main = ({ formInput, setFormInput }) => (
+const Main = ({
+  formInput,
+  setFormInput,
+  avaliableTimes,
+  setAvaliableTimes,
+  submitForm,
+}) => (
   <main
     style={{
       flex: 1,
@@ -11,7 +17,13 @@ const Main = ({ formInput, setFormInput }) => (
     }}
   >
     <SideContainer />
-    <Form formInput={formInput} setFormInput={setFormInput} />
+    <Form
+      formInput={formInput}
+      setFormInput={setFormInput}
+      avaliableTimes={avaliableTimes}
+      setAvaliableTimes={setAvaliableTimes}
+      submitForm={submitForm}
+    />
   </main>
 );
 

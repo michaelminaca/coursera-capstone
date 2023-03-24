@@ -4,6 +4,8 @@ import COLORS from '../assets/STYLES';
 
 import Card from './Card';
 
+import API_FUNCS from '../API';
+
 const formTextStyle = {
   fontFamily: 'Karla, sans-serif',
   fontSize: '30px',
@@ -16,13 +18,25 @@ const submitButtonStyle = {
   borderRadius: '16px',
 };
 
-const Form = ({ formInput, setFormInput }) => {
+const Form = ({
+  formInput,
+  setFormInput,
+  avaliableTimes,
+  setAvaliableTimes,
+  submitForm,
+}) => {
   const [isReservationBooking, setIsReservationBooking] = useState(false);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setFormInput({ name: '', date: '', time: '', numberOfDiners: '' });
-    setIsReservationBooking(true);
+    setFormInput({
+      name: '',
+      date: '',
+      time: '',
+      numberOfDiners: '',
+      occasion: '',
+    });
+    if (API_FUNCS.submitAPI(formInput)) setIsReservationBooking(true);
   };
 
   return (
@@ -60,6 +74,7 @@ const Form = ({ formInput, setFormInput }) => {
                 required
                 onChange={(e) =>
                   setFormInput((prev) => {
+                    setAvaliableTimes(e.target.value);
                     return { ...prev, date: e.target.value };
                   })
                 }
@@ -68,24 +83,27 @@ const Form = ({ formInput, setFormInput }) => {
             </VStack>
             <VStack>
               <label style={formTextStyle}>Time: </label>
-              <input
-                type="time"
-                required
+              <select
                 onChange={(e) =>
                   setFormInput((prev) => {
                     return { ...prev, time: e.target.value };
                   })
                 }
                 value={formInput.time}
-              ></input>
+              >
+                {avaliableTimes.map((val) => (
+                  <option>{val}</option>
+                ))}
+              </select>
             </VStack>
             <VStack>
               <label style={formTextStyle}>Number of Diners: </label>
               <input
                 type="number"
                 required
+                placeholder="1"
                 min="1"
-                max="32"
+                max="10"
                 onChange={(e) =>
                   setFormInput((prev) => {
                     return {
@@ -95,6 +113,22 @@ const Form = ({ formInput, setFormInput }) => {
                   })
                 }
                 value={formInput.numberOfDiners}
+              ></input>
+            </VStack>
+            <VStack>
+              <label style={formTextStyle}>Occasion: </label>
+              <input
+                type="text"
+                required
+                onChange={(e) =>
+                  setFormInput((prev) => {
+                    return {
+                      ...prev,
+                      occasion: e.target.value,
+                    };
+                  })
+                }
+                value={formInput.occasion}
               ></input>
             </VStack>
 
