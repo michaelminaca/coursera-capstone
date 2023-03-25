@@ -4,6 +4,10 @@ import NavBar from './NavBar';
 
 import API_FUNCS from '../API';
 
+export const updateTimes = (state, action) => {
+  return API_FUNCS.fetchAPI(action);
+};
+
 const ReservationsPage = () => {
   const [formInput, setFormInput] = useState({
     name: '',
@@ -13,10 +17,6 @@ const ReservationsPage = () => {
   });
 
   const submitForm = (formData) => API_FUNCS.submitForm(formData);
-
-  const updateTimes = (state, action) => {
-    return API_FUNCS.fetchAPI(action);
-  };
 
   const [avaliableTimes, setAvaliableTimes] = useReducer(updateTimes, []);
 

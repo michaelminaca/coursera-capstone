@@ -92,7 +92,7 @@ const Form = ({
                 value={formInput.time}
               >
                 {avaliableTimes.map((val) => (
-                  <option>{val}</option>
+                  <option key={val}>{val}</option>
                 ))}
               </select>
             </VStack>
